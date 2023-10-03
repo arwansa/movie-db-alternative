@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Arwan - eDOT assignment</string>
+
+    <string name="dashboard_title_menu_home">Home</string>
+    <string name="dashboard_title_menu_categories">Categories</string>
+    <string name="dashboard_title_menu_downloads">Downloads</string>
+    <string name="dashboard_title_menu_more">More</string>
+
+    <string name="fragment_empty_text_blank_page">Blank Page</string>
 </resources>
