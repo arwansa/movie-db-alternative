@@ -7,6 +7,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import me.arwan.moviedb.BuildConfig
+import me.arwan.moviedb.data.remote.MovieRemoteDataSource
+import me.arwan.moviedb.data.remote.MovieService
+import me.arwan.moviedb.data.repository.MovieRepository
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -35,5 +38,20 @@ object AppModule {
         .baseUrl(BuildConfig.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
+
+    @Provides
+    fun provideMovieService(retrofit: Retrofit): MovieService =
+        retrofit.create(MovieService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideMovieRemoteDataSource(movieService: MovieService) =
+        MovieRemoteDataSource(movieService)
+
+    @Singleton
+    @Provides
+    fun provideRepository(
+        remoteDataSource: MovieRemoteDataSource
+    ) = MovieRepository(remoteDataSource)
 
 }
