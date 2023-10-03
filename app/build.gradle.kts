@@ -25,6 +25,7 @@ android {
         val projectProperties = readProperties(file("../config.properties"))
         buildConfigField("String", "BASE_URL", projectProperties["base_url"] as String)
         buildConfigField("String", "API_KEY", projectProperties["api_key"] as String)
+        buildConfigField("String", "API_HOST", projectProperties["api_host"] as String)
     }
 
     buildTypes {
