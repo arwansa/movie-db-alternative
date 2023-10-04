@@ -7,10 +7,11 @@
 
     <ImageView
         android:id="@+id/image_view_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_home"
+        android:scaleType="fitCenter"
+        android:src="@drawable/img_marvel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,10 +19,12 @@
 
     <ImageView
         android:id="@+id/image_view_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_circle_shadow"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_categories"
+        android:scaleType="fitCenter"
+        android:src="@drawable/img_profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/half_standard_padding">
 
     <TextView
         android:id="@+id/textview_section_title"
@@ -11,7 +12,7 @@
         android:layout_height="wrap_content"
         android:paddingHorizontal="@dimen/standard_padding"
         android:paddingTop="@dimen/standard_padding"
-        android:paddingBottom="@dimen/half_standard_margin"
+        android:paddingBottom="@dimen/half_standard_padding"
         android:textSize="@dimen/large_font_size"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +26,7 @@
         android:clipToPadding="false"
         android:nestedScrollingEnabled="false"
         android:orientation="horizontal"
-        android:paddingHorizontal="@dimen/half_standard_margin"
+        android:paddingHorizontal="@dimen/half_standard_padding"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

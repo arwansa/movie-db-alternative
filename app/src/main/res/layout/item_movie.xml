@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingHorizontal="@dimen/half_standard_margin">
+    android:paddingHorizontal="@dimen/half_standard_padding">
 
     <ImageView
         android:id="@+id/image_view_movie"
