@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import me.arwan.moviedb.core.Resource
 import me.arwan.moviedb.core.launchSafeIO
-import me.arwan.moviedb.data.model.SearchResponse
+import me.arwan.moviedb.data.model.Section
 import me.arwan.moviedb.data.repository.MovieRepository
 import javax.inject.Inject
 
@@ -16,7 +16,7 @@ class HomeViewModel @Inject constructor(
     private val movieRepository: MovieRepository
 ) : ViewModel() {
 
-    private val _result = MutableStateFlow<Resource<SearchResponse>>(Resource.idle())
+    private val _result = MutableStateFlow<Resource<List<Section>>>(Resource.idle())
     val result = _result.asStateFlow()
 
     private var jobRequest: Job? = null
@@ -32,7 +32,13 @@ class HomeViewModel @Inject constructor(
                 _result.value = if (error.orEmpty().isNotEmpty()) {
                     Resource.error(error.orEmpty())
                 } else {
-                    resource
+                    val movieList = resource.data?.movieList.orEmpty()
+                    val section = listOf(
+                        Section("Latest Movies", movieList, true),
+                        Section("Latest Series", movieList, true),
+                        Section("Trending Today", movieList, false)
+                    )
+                    Resource.success(section)
                 }
             },
             blockException = {

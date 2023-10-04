@@ -2,13 +2,13 @@ package me.arwan.moviedb.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class SearchResponse(
+data class SearchMovieResponse(
 
     @SerializedName("Response")
     val response: Boolean? = false,
 
     @SerializedName("Search")
-    val search: List<MovieResponse>? = emptyList(),
+    val movieList: List<MovieResponse>? = emptyList(),
 
     @SerializedName("Error")
     val error: String? = ""
