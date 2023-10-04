@@ -7,4 +7,5 @@
     <string name="dashboard_title_menu_more">More</string>
 
     <string name="fragment_empty_text_blank_page">Blank Page</string>
+    <string name="retry">Retry</string>
 </resources>

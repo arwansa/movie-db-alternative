@@ -1,4 +1,4 @@
-package me.arwan.moviedb
+package me.arwan.moviedb.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import me.arwan.moviedb.R
 import me.arwan.moviedb.data.model.MovieResponse
 import me.arwan.moviedb.databinding.ItemMovieBinding
 

@@ -1,6 +1,7 @@
 package me.arwan.moviedb.core
 
 import android.content.Context
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -37,6 +38,15 @@ fun ViewModel.launchSafeIO(
     }
 }
 
-fun Context.showToast(message: String) {
+fun Context?.showToast(message: String) {
+    if (this == null) return
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+}
+
+fun View?.setGone() {
+    this?.visibility = View.GONE
+}
+
+fun View?.setVisible() {
+    this?.visibility = View.VISIBLE
 }

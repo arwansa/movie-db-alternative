@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:padding="@dimen/standard_padding">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image_view_logo"
         android:layout_width="150dp"
         android:layout_height="60dp"
@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image_view_profile"
         android:layout_width="50dp"
         android:layout_height="50dp"

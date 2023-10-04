@@ -1,4 +1,4 @@
-package me.arwan.moviedb
+package me.arwan.moviedb.ui.adapter
 
 import me.arwan.moviedb.data.model.MovieResponse
 

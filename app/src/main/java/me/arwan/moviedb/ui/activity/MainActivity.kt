@@ -1,10 +1,13 @@
-package me.arwan.moviedb
+package me.arwan.moviedb.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
+import me.arwan.moviedb.R
 import me.arwan.moviedb.databinding.ActivityMainBinding
+import me.arwan.moviedb.ui.fragment.BlankFragment
+import me.arwan.moviedb.ui.fragment.HomeFragment
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:paddingHorizontal="@dimen/half_standard_padding">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image_view_movie"
         android:layout_width="100dp"
         android:layout_height="150dp"

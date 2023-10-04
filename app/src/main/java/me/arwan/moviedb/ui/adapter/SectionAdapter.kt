@@ -1,9 +1,8 @@
-package me.arwan.moviedb
+package me.arwan.moviedb.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import me.arwan.moviedb.core.showToast
 import me.arwan.moviedb.data.model.Section
 import me.arwan.moviedb.databinding.ItemHeaderBinding
 import me.arwan.moviedb.databinding.ItemMovieSectionBinding
