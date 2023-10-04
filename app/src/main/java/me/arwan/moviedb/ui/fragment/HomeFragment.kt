@@ -32,9 +32,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding = FragmentHomeBinding.bind(view)
 
         setupRecyclerView()
+        setupRetryButton()
         observeMovies()
 
-        viewModel.search("Avengers Endgame", 1)
+        loadData()
     }
 
     private fun setupRecyclerView() {
@@ -46,10 +47,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             override fun onMovieItemClicked(movie: MovieResponse) {
                 context?.showToast("Movie clicked: ${movie.title}")
             }
-
         })
         binding.recyclerView.adapter = adapter
     }
+
+    private fun setupRetryButton() = binding.buttonRetry.setOnClickListener { loadData() }
 
     private fun observeMovies() = lifecycleScope.launch {
         viewModel.result.collect {
@@ -62,6 +64,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
         }
     }
+
+    private fun loadData() = viewModel.search("Avengers Endgame", 1)
 
     private fun showLoadingState() {
         binding.progressBar.setVisible()

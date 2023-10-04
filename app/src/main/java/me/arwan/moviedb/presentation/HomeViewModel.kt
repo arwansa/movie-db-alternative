@@ -22,29 +22,26 @@ class HomeViewModel @Inject constructor(
     private var jobRequest: Job? = null
 
     fun search(searchKey: String, page: Int) {
-        jobRequest = launchSafeIO(
-            blockBefore = {
-                _result.value = Resource.loading()
-            },
-            blockIO = {
-                val resource = movieRepository.search(searchKey, page)
-                val error = resource.data?.error
-                _result.value = if (error.orEmpty().isNotEmpty()) {
-                    Resource.error(error.orEmpty())
-                } else {
-                    val movieList = resource.data?.movieList.orEmpty()
-                    val section = listOf(
-                        Section("Latest Movies", movieList, true),
-                        Section("Latest Series", movieList, true),
-                        Section("Trending Today", movieList, false)
-                    )
-                    Resource.success(section)
-                }
-            },
-            blockException = {
-                _result.value = Resource.error(it.localizedMessage.orEmpty())
+        jobRequest = launchSafeIO(blockBefore = {
+            _result.value = Resource.loading()
+        }, blockIO = {
+            val resource = movieRepository.search(searchKey, page)
+            val movieList = resource.data?.movieList.orEmpty()
+            _result.value = if (movieList.isNotEmpty()) {
+                val section = listOf(
+                    Section("Latest Movies", movieList, true),
+                    Section("Latest Series", movieList, true),
+                    Section("Trending Today", movieList, false)
+                )
+                Resource.success(section)
+            } else {
+                val message = resource.data?.error ?: resource.message.orEmpty()
+                Resource.error(message)
+
             }
-        )
+        }, blockException = {
+            _result.value = Resource.error(it.localizedMessage.orEmpty())
+        })
     }
 
     override fun onCleared() {
