@@ -1,5 +1,7 @@
 package me.arwan.moviedb.core
 
+import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CancellationException
@@ -33,4 +35,8 @@ fun ViewModel.launchSafeIO(
             blockAfter(isForCancelled)
         }
     }
+}
+
+fun Context.showToast(message: String) {
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }

@@ -3,11 +3,14 @@ package me.arwan.moviedb
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import me.arwan.moviedb.core.showToast
 import me.arwan.moviedb.data.model.Section
 import me.arwan.moviedb.databinding.ItemHeaderBinding
 import me.arwan.moviedb.databinding.ItemMovieSectionBinding
 
-class SectionAdapter :
+class SectionAdapter(
+    private val callback: MovieItemCallback
+) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var sectionList: List<Section> = emptyList()
@@ -24,7 +27,8 @@ class SectionAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(section: Section) {
             binding.textviewSectionTitle.text = section.title
-            binding.recyclerView.adapter = MovieAdapter(section.movieList, section.isLargeThumbnail)
+            binding.recyclerView.adapter =
+                MovieAdapter(section.movieList, section.isLargeThumbnail, callback)
         }
     }
 
@@ -38,6 +42,7 @@ class SectionAdapter :
                 val binding = ItemHeaderBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
                 )
+                binding.imageViewProfile.setOnClickListener { callback.onProfileClicked() }
                 HeaderViewHolder(binding)
             }
 

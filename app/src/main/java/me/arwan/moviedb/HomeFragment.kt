@@ -8,6 +8,8 @@ import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import me.arwan.moviedb.core.Resource
+import me.arwan.moviedb.core.showToast
+import me.arwan.moviedb.data.model.MovieResponse
 import me.arwan.moviedb.databinding.FragmentHomeBinding
 
 @AndroidEntryPoint
@@ -22,11 +24,24 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
 
-        adapter = SectionAdapter()
-        binding.recyclerView.adapter = adapter
-
+        setupRecyclerView()
         observeMovies()
+
         viewModel.search("Avengers Endgame", 1)
+    }
+
+    private fun setupRecyclerView() {
+        adapter = SectionAdapter(object : MovieItemCallback {
+            override fun onProfileClicked() {
+                context?.showToast("Profile clicked")
+            }
+
+            override fun onMovieItemClicked(movie: MovieResponse) {
+                context?.showToast("Movie clicked: ${movie.title}")
+            }
+
+        })
+        binding.recyclerView.adapter = adapter
     }
 
     private fun observeMovies() = lifecycleScope.launch {

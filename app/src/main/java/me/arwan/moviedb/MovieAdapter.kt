@@ -10,12 +10,15 @@ import me.arwan.moviedb.data.model.MovieResponse
 import me.arwan.moviedb.databinding.ItemMovieBinding
 
 class MovieAdapter(
-    private val movieList: List<MovieResponse>, private val isLargeThumbnail: Boolean
+    private val movieList: List<MovieResponse>,
+    private val isLargeThumbnail: Boolean,
+    private val callback: MovieItemCallback
 ) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     inner class MovieViewHolder(private val binding: ItemMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: MovieResponse) {
+            binding.root.setOnClickListener { callback.onMovieItemClicked(movie) }
             Glide.with(binding.root.context)
                 .load(movie.poster)
                 .error(R.drawable.ic_broken_image)
